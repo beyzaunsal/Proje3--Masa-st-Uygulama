@@ -75,13 +75,14 @@ class RehberPencere(QMainWindow):
         layout.addWidget(eklenecek_tel)
         layout.addWidget(self.teledit)
 
-        login_button = QPushButton("Giriş Yap")
-        layout.addWidget(login_button)
+        self.save_button = QPushButton("Kaydet")
+        self.save_button.clicked.connect(self.listeAc)
+        layout.addWidget(self.save_button)
 
         ana_bilesenler.setLayout(layout)
         self.setCentralWidget(ana_bilesenler)
 
-    def kontrolEt(self):
+    def listeAc(self):
         Ad = self.isimEdit.text()
         Soyadı = self.soyadedit.text()
         Telefon = self.teledit.text()
@@ -90,14 +91,13 @@ class RehberPencere(QMainWindow):
 
         if Ad== "" and Soyadı == "" and Telefon =="":
             self.listeAc()
-
+    
         else:
             QMessageBox.warning(self, "Hata", "Kişi Kaydedilemedi!")
 
     def listeAc(self):
         QMessageBox.information(self, "Başarılı", "Kişi Kaydedildi.")
-        self.close()  # Login penceresini kapat
-
+        self.close()  
 def main():
     app = QApplication(sys.argv)
     window = AnaPencere()

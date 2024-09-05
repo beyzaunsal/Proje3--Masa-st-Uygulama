@@ -70,6 +70,7 @@ class RehberPencere(QMainWindow):
 
         eklenecek_tel = QLabel("Telefon")
         self.teledit = QLineEdit()
+        
         layout.addWidget(eklenecek_tel)
         layout.addWidget(self.teledit)
 
