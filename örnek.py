@@ -1,7 +1,7 @@
 import sys
 from PyQt6.QtWidgets import *
-import Rehber
 
+# Ana Pencere (Login ekranı)
 class AnaPencere(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -39,16 +39,16 @@ class AnaPencere(QMainWindow):
 
         if username == "p" and password == "p":
             self.rehberiAc()
-
         else:
             QMessageBox.warning(self, "Hata", "Geçersiz kullanıcı adı veya şifre!")
 
     def rehberiAc(self):
         QMessageBox.information(self, "Başarılı", "Giriş başarılı!\nANA PROGRAMDASINIZ.")
         self.close()  # Login penceresini kapat
-        self.rehber_window = RehberPencere()
+        self.rehber_window = RehberPencere()  # Rehber ekranını aç
         self.rehber_window.show()
-    
+
+# Rehber Pencere
 class RehberPencere(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -60,30 +60,18 @@ class RehberPencere(QMainWindow):
         ana_bilesenler = QWidget()
         layout = QVBoxLayout()
 
-        eklenecek_isim=QLabel("Ad")
-        self.isimEdit = QLineEdit()
+        eklenecek_isim = QLabel("Ad")
+        self.isimEdit = QLineEdit()  # self.isimEdit bir QLineEdit olmalı
         layout.addWidget(eklenecek_isim)
         layout.addWidget(self.isimEdit)
-
-        eklenecek_soyad =QLabel("Soyadı")
-        self.soyadedit=QLineEdit()
-        layout.addWidget(eklenecek_soyad)
-        layout.addWidget(self.soyadedit)
-
-        eklenecek_tel=QLabel("Telefon")
-        self.teledit=QLineEdit()
-        layout.addWidget(eklenecek_tel)
-        layout.addWidget(self.teledit)
-
-        login_button = QPushButton("Giriş Yap")
-        layout.addWidget(login_button)
 
         ana_bilesenler.setLayout(layout)
         self.setCentralWidget(ana_bilesenler)
 
+# Uygulamanın ana fonksiyonu
 def main():
     app = QApplication(sys.argv)
-    window = AnaPencere()
+    window = AnaPencere()  # İlk olarak login penceresi açılır
     window.show()
     sys.exit(app.exec())
 
