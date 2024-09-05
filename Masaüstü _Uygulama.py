@@ -44,7 +44,7 @@ class AnaPencere(QMainWindow):
             QMessageBox.warning(self, "Hata", "Geçersiz kullanıcı adı veya şifre!")
 
     def rehberiAc(self):
-        QMessageBox.information(self, "Başarılı", "Giriş başarılı!\nANA PROGRAMDASINIZ.")
+        QMessageBox.information(self, "Başarılı", "Giriş başarılı!\ Programa giriş yaptınız.")
         self.close()  # Login penceresini kapat
         self.rehber_window = RehberPencere()
         self.rehber_window.show()
@@ -60,17 +60,17 @@ class RehberPencere(QMainWindow):
         ana_bilesenler = QWidget()
         layout = QVBoxLayout()
 
-        eklenecek_isim=QLabel("Ad")
+        eklenecek_isim=QLabel("Ad:")
         self.isimEdit = QLineEdit()
         layout.addWidget(eklenecek_isim)
         layout.addWidget(self.isimEdit)
 
-        eklenecek_soyad =QLabel("Soyadı")
+        eklenecek_soyad =QLabel("Soyadı:")
         self.soyadedit=QLineEdit()
         layout.addWidget(eklenecek_soyad)
         layout.addWidget(self.soyadedit)
 
-        eklenecek_tel=QLabel("Telefon")
+        eklenecek_tel=QLabel("Telefon:")
         self.teledit=QLineEdit()
         layout.addWidget(eklenecek_tel)
         layout.addWidget(self.teledit)
@@ -98,6 +98,7 @@ class RehberPencere(QMainWindow):
     def listeAc(self):
         QMessageBox.information(self, "Başarılı", "Kişi Kaydedildi.")
         self.close()  
+
 def main():
     app = QApplication(sys.argv)
     window = AnaPencere()
