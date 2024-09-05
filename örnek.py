@@ -1,7 +1,6 @@
 import sys
 from PyQt6.QtWidgets import *
-
-# Ana Pencere (Login ekranı)
+import Rehber
 class AnaPencere(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -45,10 +44,9 @@ class AnaPencere(QMainWindow):
     def rehberiAc(self):
         QMessageBox.information(self, "Başarılı", "Giriş başarılı!\nANA PROGRAMDASINIZ.")
         self.close()  # Login penceresini kapat
-        self.rehber_window = RehberPencere()  # Rehber ekranını aç
+        self.rehber_window = RehberPencere()
         self.rehber_window.show()
 
-# Rehber Pencere
 class RehberPencere(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -61,17 +59,46 @@ class RehberPencere(QMainWindow):
         layout = QVBoxLayout()
 
         eklenecek_isim = QLabel("Ad")
-        self.isimEdit = QLineEdit()  # self.isimEdit bir QLineEdit olmalı
+        self.isimEdit = QLineEdit()
         layout.addWidget(eklenecek_isim)
         layout.addWidget(self.isimEdit)
+
+        eklenecek_soyad = QLabel("Soyadı")
+        self.soyadedit = QLineEdit()
+        layout.addWidget(eklenecek_soyad)
+        layout.addWidget(self.soyadedit)
+
+        eklenecek_tel = QLabel("Telefon")
+        self.teledit = QLineEdit()
+        layout.addWidget(eklenecek_tel)
+        layout.addWidget(self.teledit)
+
+        save_button = QPushButton("Kaydet")  # "Giriş Yap" yerine "Kaydet"
+        save_button.clicked.connect(self.kontrolEt)  # Butona tıklama olayı ekleyin
+        layout.addWidget(save_button)
 
         ana_bilesenler.setLayout(layout)
         self.setCentralWidget(ana_bilesenler)
 
-# Uygulamanın ana fonksiyonu
+    def kontrolEt(self):
+        Ad = self.isimEdit.text()
+        Soyadı = self.soyadedit.text()
+        Telefon = self.teledit.text()
+
+        print(f"ADI :{Ad}, SOYADI : {Soyadı}, TEL :{Telefon} girdiniz.")
+
+        if Ad == "" and Soyadı == "" and Telefon == "":
+            self.listeAc()
+        else:
+            QMessageBox.warning(self, "Hata", "Kişi Kaydedilemedi!")
+
+    def listeAc(self):
+        QMessageBox.information(self, "Başarılı", "Kişi Kaydedildi.")
+        self.close()  # Rehber penceresini kapat
+
 def main():
     app = QApplication(sys.argv)
-    window = AnaPencere()  # İlk olarak login penceresi açılır
+    window = AnaPencere()
     window.show()
     sys.exit(app.exec())
 

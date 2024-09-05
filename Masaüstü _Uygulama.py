@@ -81,6 +81,23 @@ class RehberPencere(QMainWindow):
         ana_bilesenler.setLayout(layout)
         self.setCentralWidget(ana_bilesenler)
 
+    def kontrolEt(self):
+        Ad = self.isimEdit.text()
+        Soyadı = self.soyadedit.text()
+        Telefon = self.teledit.text()
+
+        print(f"ADI :{Ad}, SOYADI : {Soyadı}, TEL :{Telefon} girdiniz.")
+
+        if Ad== "" and Soyadı == "" and Telefon =="":
+            self.listeAc()
+
+        else:
+            QMessageBox.warning(self, "Hata", "Kişi Kaydedilemedi!")
+
+    def listeAc(self):
+        QMessageBox.information(self, "Başarılı", "Kişi Kaydedildi.")
+        self.close()  # Login penceresini kapat
+
 def main():
     app = QApplication(sys.argv)
     window = AnaPencere()
