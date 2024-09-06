@@ -1,19 +1,6 @@
 import sys
 from PyQt6.QtWidgets import *
-import mysql.connector
 import Rehber
-
-veritabani1 = baglanti = mysql.connector.connect(
-    host="localhost", 
-    user="root", 
-    password="1234",
-    database="rehber" 
-)
-secilenVT=veritabani1.cursor()
-print("Bağlantı tamam..")
-
-secilenVT.execute("CREATE TABLE IF NOT EXISTS kullancilar (kullaniciAdi VARCHAR(255), KullanıcıŞifresi VARCHAR(255))")
-# komut= "INSERT INTO kullanicilar( kullaniciAdi,kullanıcıSifre) "
 
 class AnaPencere(QMainWindow):
     def __init__(self):
@@ -45,25 +32,10 @@ class AnaPencere(QMainWindow):
         self.setCentralWidget(ana_bilesenler)
 
     def kontrolEt(self):
-
         username = self.username_input.text()
         password = self.password_input.text()
 
-        try:
-            secilenVeriTabani.execute("SELECT * FROM  kullancilar where kullaniciAdi ={username}, KullanıcıŞifresi = {password}")
-            bilgiler = secilenVeriTabani.fetchone()
-            print("VeriTabanından alınan tür :", type(bilgiler))
-            print("bilgiler[0]:,bilgiler[0]")
-            print("bilgiler[1]:,bilgiler[1]")
-            print("VeriTabanından alınanlar :",bilgiler,sep= "  " )
-
-        except:
-            print("Sorgu Hatası")    
-    
-
         print(f"Birinci Kutuya {username}, ikinci kutuya {password} girdiniz.")
-
-
 
         if username == "p" and password == "p":
             self.rehberiAc()
@@ -74,7 +46,7 @@ class AnaPencere(QMainWindow):
     def rehberiAc(self):
         QMessageBox.information(self, "Başarılı", "Giriş başarılı!\ Programa giriş yaptınız.")
         self.close()  # Login penceresini kapat
-        self.rehber_window = RehberSecenek()
+        self.rehber_window = RehberPencere()
         self.rehber_window.show()
     
 class RehberPencere(QMainWindow):
@@ -127,58 +99,6 @@ class RehberPencere(QMainWindow):
         QMessageBox.information(self, "Başarılı", "Kişi Kaydedildi.")
         self.close()  
 
-class RehberSecenek(QMainWindow):
-     def arayuz(self):
-        ana_bilesenler = QWidget()
-        layout = QVBoxLayout()
-
-        ekranSecenek1=QLabel("Ekle")
-        self.EkleEdit = QLineEdit()
-        layout.addWidget(ekranSecenek1)
-        layout.addWidget(self.EkleEdit)
-
-        login_button = QPushButton("Ekle")
-        login_button.clicked.connect(self.EkleEdit)
-        layout.addWidget(login_button)
-
-        ekranSecenek2 =QLabel("Listele")
-        self.Listeleedit=QLineEdit()
-        layout.addWidget(ekranSecenek2)
-        layout.addWidget(self.Listeleedit)
-
-        login_button = QPushButton("Listele")
-        login_button.clicked.connect(self.Listeleedit)
-        layout.addWidget(login_button)
-
-        ekranSecenek3=QLabel("Ara")
-        self.araedit=QLineEdit()
-        layout.addWidget(ekranSecenek3)
-        layout.addWidget(self.araedit)
-
-        login_button = QPushButton("Ara")
-        login_button.clicked.connect(self.araedit)
-        layout.addWidget(login_button)
-
-        ekranSecenek4=QLabel("Sil")
-        self.siledit=QLineEdit()
-        layout.addWidget(ekranSecenek4)
-        layout.addWidget(self.asiledit)
-
-        login_button = QPushButton("Sil")
-        login_button.clicked.connect(self.siledit)
-        layout.addWidget(login_button)
-
-        ekranSecenek5=QLabel("Düzelt")
-        self.düzeltedit=QLineEdit()
-        layout.addWidget(ekranSecenek5)
-        layout.addWidget(self.düzeltedit)
-
-        login_button = QPushButton("Düzelt")
-        login_button.clicked.connect(self.düzeltedit)
-
-        ana_bilesenler.setLayout(layout)
-        self.setCentralWidget(ana_bilesenler)
-                
 def main():
     app = QApplication(sys.argv)
     window = AnaPencere()
