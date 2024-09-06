@@ -289,3 +289,4 @@
 # secilenVT.execute(sql)
 # veritabani1.commit()
 
+####SQL JOİN--------------------(KATMA,BİRLEŞTİRME)
