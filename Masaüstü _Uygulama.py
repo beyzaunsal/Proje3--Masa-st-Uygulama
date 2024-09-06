@@ -136,6 +136,7 @@ class RehberSecenek(QMainWindow):
         self.EkleEdit = QLineEdit()
         layout.addWidget(ekranSecenek1)
         layout.addWidget(self.EkleEdit)
+    
 
         login_button = QPushButton("Ekle")
         login_button.clicked.connect(self.EkleEdit)
@@ -178,7 +179,7 @@ class RehberSecenek(QMainWindow):
 
         ana_bilesenler.setLayout(layout)
         self.setCentralWidget(ana_bilesenler)
-                
+
 def main():
     app = QApplication(sys.argv)
     window = AnaPencere()
@@ -186,4 +187,4 @@ def main():
     sys.exit(app.exec())
 
 if __name__ == "__main__":
-    main()
+    main()      
