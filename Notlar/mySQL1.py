@@ -237,9 +237,44 @@
 # secilenVT.execute(sql)
 # veritabani1.commit()
 
-# # print(mycursor.rowcount, "kayıt silindi.")
+# # print(mycursor.rowcount, "kayıt silindi.") 
 
-# #GÜNCELLEME----,(UPDATE,SET)
+##Değişkendeki veriyi içeren kaydı silme-----------------
+# import mysql.connector
+
+# veritabani1= mysql.connector.connect(
+#   host="localhost",
+#   user="root",
+#   password="1234",
+#   database="pythonders"
+# )
+
+# secilenVT= veritabani1.cursor()
+
+# sql = "DELETE FROM ogrenciler WHERE telefon = %s"
+# tel = ("05426324156", )
+
+# secilenVT.execute(sql, tel)
+# veritabani1.commit()
+
+# print(mycursor.rowcount, "kayıt silindi.")
+
+##Tablo silme Eğer varsa (yoksa hata vermesin diye)-------
+# import mysql.connector
+
+# veritabani1 = mysql.connector.connect(
+#  host="localhost", # default olanı localhost.
+#  user="root", # default olanı root.
+#  password="1234",
+#  database="pythonders" # MySQL WorkBench kurarken yazdığınız şifre
+# )
+
+# secilenVT = veritabani1.cursor
+# sql = "DROP TABLE IF EXISTS ogrenciler2"
+# secilenVT.execute(sql)
+
+
+# #GÜNCELLEME----------------- (UPDATE,SET)
 # import mysql.connector
 
 # veritabani1 = mysql.connector.connect(
@@ -253,3 +288,4 @@
 # sql = "DELETE FROM ogrenciler AS WHERE telefon = '05325214587'"
 # secilenVT.execute(sql)
 # veritabani1.commit()
+
