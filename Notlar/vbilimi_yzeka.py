@@ -164,7 +164,10 @@
 
 
 #  matplotlib -------------------------------------------
-import matplotlib.pyplot as plt
-plt.plot([1,2,3], [80,70,90])
-plt.show()
+#  pandas---------------- csv dosaylarına veri yazar
 
+import pandas as pd
+data = {
+"calories"   , [420,380,390],
+"duracations",[50,40,45]
+}
