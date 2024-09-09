@@ -88,3 +88,41 @@
 # print("\nEleman        => arr1[2,1] : ",arr1[2,1])  
 
 
+# split (bölme)------------------------------
+# import numpy as np
+# arr = np.array([1, 2, 3, 4, 5, 6])
+# newarr = np.array_split(arr, 2)
+# print("\n3'e bölünen yeni dizi :",newarr)
+
+#search(dizide arama)-----------------
+# import numpy as np
+# arr = np.array([3, 2, 0, 1])
+# print(np.sort(arr)) # numerik sıralama
+
+# arr = np.array(['muz','elma','armut'])
+# print(np.sort(arr)) # string sıralama
+
+# arr = np.array([True, False, True])
+# print(np.sort(arr)) # bolean sıralama
+
+# arr = np.array([[3, 2, 4], [5, 0, 1]])
+# print(np.sort(arr)) # 2D array sıralama
+
+
+# filreleme-------------------
+
+
+# numpy ve OpenCV ile Resim oluşturma-----------------
+import cv2
+import numpy as np
+
+r1 =np.full((5,5,3),[255,255,255],dtype=np.uint8)
+print(r1)
+
+dtype=np.uint8
+
+cv2.imshow("Olusan resim", r1)
+
+cv2.waitKey(0)
+ 
+cv2.destroyAllWindows()
