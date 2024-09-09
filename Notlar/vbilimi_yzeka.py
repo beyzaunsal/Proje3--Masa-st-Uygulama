@@ -113,16 +113,58 @@
 
 
 # numpy ve OpenCV ile Resim oluşturma-----------------
-import cv2
-import numpy as np
+# import cv2
+# import numpy as np
 
-r1 =np.full((5,5,3),[255,255,255],dtype=np.uint8)
-print(r1)
+# r1 =np.full((200,300,3),[255,0,255],dtype=np.uint8)
+# r2 =np.full((200,300,3),[0,255,255],dtype=np.uint8)
+# r3 = np.concatenate((r1,r2))
+# r4 = np.stack((r1,r2))
+# print(r2)
+# print(r1)
+# # dtype=np.uint8
 
-dtype=np.uint8
+# cv2.imshow("Olusan resim", r1)
+# cv2.imshow("Olusan resim", r2)
 
-cv2.imshow("Olusan resim", r1)
 
-cv2.waitKey(0)
+# cv2.waitKey(0)
  
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
+
+#yeniörnek--------------
+# import cv2, random
+# import numpy as np
+# max = 300
+# m = random.randint(0,255);
+# y = random.randint(0,255); k = random.randint(0,255);
+# r1= np.full((max, max, 3), [m, y, k], dtype=np.uint8)
+
+# for a in range (max):
+#     for b in range(a, max):
+#       if a == b : r1[a,b] = [0, 0, 0]
+#       if a == b//2 : r1[a,b] = [0, 0, 255]
+
+# for c in range(100):
+#    m1=random.randint(0,255); y1=random.randint(0,255); k1=random.randint(0,255);
+#    x = random.randint(3,max-3); y = random.randint(3,max-3)
+#    r1[x-1, y-1] = [m1, y1, k1]
+#    r1[x-1, y] = [m1, y1, k1]
+#    r1[x-1, y+1] = [m1, y1, k1]
+#    r1[x, y-1] = [m1, y1, k1]
+#    r1[x, y] = [m1, y1, k1]
+#    r1[x, y+1] = [m1, y1, k1]
+#    r1[x+1, y-1] = [m1, y1, k1]
+#    r1[x+1, y] = [m1, y1, k1]
+#    r1[x+1, y+1] = [m1, y1, k1]
+
+# cv2.imshow("Resim", r1)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+
+#  matplotlib -------------------------------------------
+import matplotlib.pyplot as plt
+plt.plot([1,2,3], [80,70,90])
+plt.show()
+
