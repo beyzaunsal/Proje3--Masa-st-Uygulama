@@ -8,7 +8,7 @@ def SifreOlustur():
     kullaniciAdi ="admin"
     sifre ="1234"
     dosya =open("rehber.txt","w")
-    dosya.write(f"{kullaniciAdi} ==>> {sifre}")
+    dosya.write(f"{kullaniciAdi} {sifre}")
     dosya.close()
 
 class AnaPencere(QMainWindow):
@@ -57,12 +57,66 @@ class AnaPencere(QMainWindow):
         self.rehber_window = RehberPencere()
         self.rehber_window.show()
     
-class RehberPencere(QMainWindow):
+class RehberPencere(QWidget):
     def __init__(self):
-        super().__init__()
+        self.arayuz()  # Bu metodun var olduğundan emin olun.
 
-        self.setWindowTitle("Rehber")
-        self.arayuz()
+    def arayuz(self):
+        # Arayüz elemanlarını burada tanımlayın
+        pass
+
+
+class AnaEkran(QMainWindow):
+    def __init__(self,XX ="Başlıksız"):
+        super(). __init__()
+        self.setWindowTitle(xx)
+
+        icerik = QVBoxLayout()
+        self.dugme1 =QPushButton("Ekle")
+        icerik.addWidget(self.dugme1)
+        self.dugme2 =QPushButton("Listele")
+        icerik.addWidget(self.dugme2)
+        self.dugme3 =QPushButton("Ara")
+        icerik.addWidget(self.dugme3)
+        self.dugme4 =QPushButton("Sil")
+        icerik.addWidget(self.dugme4)
+        self.dugme5 =QPushButton("Düzelt")
+       
+        
+        self.dugme1.clicked.connect(self.ekle)
+        self.dugme2.clicked.connect(self.listele)
+        self.dugme3.clicked.connect(self.ara)
+        self.dugme4.clicked.connect(self.sil)
+        self.dugme5.clicked.connect(self.duzelt)
+
+        araclar =QWidget()
+        araclar.setLayout(icerik)
+        self.setCentralWidget(araclar)
+
+    def ekle(self):
+            self.close()
+            self.ekleme = EklemeEkrani("Kayit Ekle")
+            self.ekleme.show()
+
+    def listele(self):
+            self.close()
+            self.listeleme = ListelemeEkrani("Kayit Listele")
+            self.listeleme.show
+    
+    def ara(self):
+            self.close()
+            self.arama = AramaEkrani("Kayit Ara")
+            self.arama.show
+
+    def sil(self):
+            self.close()
+            self.silme = SilmeEkrani("Kayit Sil")
+            self.silme.show
+    def duzelt(self):
+            self.close()
+            self.duzeltme =DuzeltmeEkrani("Kayit Duzelt")
+            self.duzeltme.show()
+
 
     def arayuz(self):
         ana_bilesenler = QWidget()

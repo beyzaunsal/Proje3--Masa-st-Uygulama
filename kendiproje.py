@@ -1,23 +1,23 @@
 import sys
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
-import mysql.connector
+from PyQt6.QtWidgets import QWidget
+import Rehber
 
-veritabani1 = baglanti = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    password = "1234",
-    database = "rehber"
-)
-secilenVeritabani = veritabani1.cursor()
-
+def SifreOlustur():
+    kullaniciAdi ="admin"
+    sifre ="1234"
+    dosya =open("rehber.txt","w")
+    dosya.write(f"{kullaniciAdi} ==>> {sifre}")
+    dosya.close()
 
 class AnaPencere(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setWindowTitle("Login Pencere")
+        self.arayuz()
 
-        self.setWindowTitle("Rehberim")
-        
-        
+    def arayuz(self):
         ana_bilesenler = QWidget()
         layout = QVBoxLayout()
 
@@ -61,7 +61,7 @@ class RehberPencere(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Rehber")
+        self.setWindowTitle("Kaydet")
         self.arayuz()
 
     def arayuz(self):
@@ -106,6 +106,35 @@ class RehberPencere(QMainWindow):
     def listeAc(self):
         QMessageBox.information(self, "Başarılı", "Kişi Kaydedildi.")
         self.close()  
+
+
+class KayitEklemeEkrani(QMainWindow):
+    def __init__(self):
+        super(KayitEklemeEkrani, self).__init__()
+        self.setWindowTitle("Rehberim")
+        self.arayuz()
+
+    def arayuz(self):
+        self.central_widget = QWidget(self)
+        layout = QVBoxLayout(central_widget)
+        yerlesim2 = QHBoxLayout()
+
+        yerlesim2.addWidget(QLabel("ADI :"))
+        Adi=QLineEdit("Ad Girin")
+        yerlesim2.addWidget(Adi)
+
+        yerlesim2.addWidget(QLabel("Telefon :"))
+        tel =QLineEdit("Telefon Girin")
+        yerlesim2.addWidget(tel)
+
+        layout.addLayout(yerlesim2)
+
+        label_baslik=QLabel("Rehber Başlığı")
+        layout.addWidget(label_baslik)
+
+        self.setLayout(layout)
+        self.arayuz()
+
 
 def main():
     app = QApplication(sys.argv)
