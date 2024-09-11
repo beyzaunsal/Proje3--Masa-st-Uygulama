@@ -359,14 +359,14 @@ class DuzeltmeEkrani(QMainWindow):
         self.icerik.addWidget(QLabel('Adı'),0,2)
         self.icerik.addWidget(QLabel('Soyadı'),0,3)
         self.icerik.addWidget(QLabel('T.Numarası'),0,4)
-        self.duzelecekId = QLineEdit("Düzelcek id")
+        self.duzelecekId = QLineEdit("Düzeltilecek Id")
         self.icerik.addWidget(self.duzelecekId,3,0)
 
-        self.yeniAd = QLineEdit("yeni ad")
+        self.yeniAd = QLineEdit("Yeni Ad")
         self.icerik.addWidget(self.yeniAd,4,0)
-        self.yeniSoyad = QLineEdit("yeni Soyad")
+        self.yeniSoyad = QLineEdit("Yeni Soyad")
         self.icerik.addWidget(self.yeniSoyad,5,0)
-        self.yeniNumara = QLineEdit("yeni Numara")
+        self.yeniNumara = QLineEdit("Yeni Numara")
         self.icerik.addWidget(self.yeniNumara,6,0)
 
         self.silB = QPushButton('Düzelt')
@@ -383,35 +383,45 @@ class DuzeltmeEkrani(QMainWindow):
     
     def getir(self):
         silinecekVeri = self.silinecek.text()
-        import sqlite3
-        vt = sqlite3.connect('rehber3.db')
-        svt = vt.cursor()
-        gelen = svt.execute(f"SELECT * FROM isimler WHERE ad='{silinecekVeri}'")
-        x=1
-        silinecek = []
+        conn = sqlite3.connect('rehber3.db')
+        cursor = conn.cursor()
 
-        for a in gelen:
-            print(a[0],a[1],a[2],a[3])
-            self.icerik.addWidget(QLabel(str(a[0])),x,1)
-            self.icerik.addWidget(QLabel(str(a[1])),x,2)
-            self.icerik.addWidget(QLabel(str(a[2])),x,3)
-            self.icerik.addWidget(QLabel(str(a[3])),x,4)
-            silinecek.append(str(a[0]))
-            x+=1
-    
-        vt.close()
+        cursor.execute("SELECT * FROM isimler WHERE ad=?", (silinecekVeri,))
+        rows = cursor.fetchall()
+
+        for i, row in enumerate(rows, start=1):
+            self.icerik.addWidget(QLabel(str(row[0])), i, 1)
+            self.icerik.addWidget(QLabel(str(row[1])), i, 2)
+            self.icerik.addWidget(QLabel(str(row[2])), i, 3)
+            self.icerik.addWidget(QLabel(str(row[3])), i, 4)
+        
+        conn.close()
 
     def duzelt(self):
-        import sqlite3
-        vt = sqlite3.connect('rehber3.db')
-        svt = vt.cursor()
-        print("self.duzelecekId.text()",self.duzelecekId.text())
-        svt.execute(f"UPDATE isimler SET ad = '{self.yeniAd.text()}', soyad = '{self.yeniSoyad.text()}', numara = '{self.yeniNumara.text()}' WHERE id = '{self.duzelecekId.text()}'")
-        vt.commit()
-        vt.close()
+        conn = sqlite3.connect('rehber3.db')
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "UPDATE isimler SET ad = ?, soyad = ?, numara = ? WHERE id = ?",
+            (self.yeniAd.text(), self.yeniSoyad.text(), self.yeniNumara.text(), self.duzelecekId.text())
+        )
+        conn.commit()
+        conn.close()
+        
         self.close()
         self.liste = VeriListeEkrani()
         self.liste.show()
+        
+    def anaEkranaDon(self):
+        # Ana ekrana dönme işlemini burada tanımlayın
+        pass
+
+class VeriListeEkrani(QMainWindow):
+    # VeriListeEkrani sınıfının tanımı burada olmalı
+    pass
+
+
+    
 
 app = QApplication(sys.argv)
 pencere = loginPenceresi()
