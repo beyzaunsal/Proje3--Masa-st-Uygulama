@@ -5,7 +5,7 @@
 <hr /><b><h4>Rehbere Kişi Ekle</h4></b>
 <img src="Resimler/eklebu.png" width="250" height="250" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişileri Listele </h4></b>
-<img src="Resimler/listelebu.png" width="250" height="200" alt="Örnek Resim"/>
+<img src="Resimler/listelebu.png" width="150" height="100" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Ara</h4></b>
 <img src="Resimler/aramabu.png" width="350" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Düzelt</h4></b>
