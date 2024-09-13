@@ -138,23 +138,23 @@ class EkleEkrani(QMainWindow):
     def kaydet(self):
         print("Kayıt kaydedildi.")
 
-    def kaydet(self):# Veritabanı işlemleri
+    def kaydet(self):
         try:
             ad = self.edit1.text()
             soyad = self.edit2.text()
             telefon = self.edit3.text()
 
-            # Veritabanı bağlantısını aç
+            
             veritabani1 = sqlite3.connect('rehber3.db')
             secilenvt = veritabani1.cursor()
 
-            # Kullanıcı verilerini veritabanına ekle
+            
             secilenvt.execute(f"INSERT INTO isimler (ad, soyad, telefon) VALUES (?, ?, ?)", (ad, soyad, telefon))
             veritabani1.commit()
 
             print("Kayıt kaydedildi.")
 
-            # Bağlantıyı kapat
+            
             secilenvt.close()
             veritabani1.close()
         except Exception as e:
@@ -184,7 +184,7 @@ class ListeleEkrani(QMainWindow):
         
         for a in liste: 
             print (a[1],a[2],a[3])
-            icerik.addWidget(QLabel(a[1]),x,1) # gridLayout taki x.satır ve 1.sütuna QLable yerleştir.
+            icerik.addWidget(QLabel(a[1]),x,1) 
             icerik.addWidget(QLabel(a[2]),x,2)
             icerik.addWidget(QLabel(a[3]),x,3)
             x+=1
@@ -284,35 +284,34 @@ class SilmeEkrani(QMainWindow):
         self.silB.clicked.connect(self.sil)
 
         self.d1 = QPushButton('Ana ekrana dön')
-        self.icerik.addWidget(self.d1,5,0) # x.satır ve 1.sütuna self.d1 widgetini yerleştir.
+        self.icerik.addWidget(self.d1,5,0) 
         self.d1.clicked.connect(self.anaEkranaDon)
 
-        araclar = QWidget() # Pencere widgeti oluştur.
-        araclar.setLayout(self.icerik) # Pencere widgeti için layout ata
+        araclar = QWidget() 
+        araclar.setLayout(self.icerik)
         self.setCentralWidget(araclar)
         
     def getir(self):
         try:
-            # Veritabanı bağlantısını aç
+            
             veritabani1 = sqlite3.connect('rehber3.db')
             secilenvt = veritabani1.cursor()
 
-            # Kullanıcıdan alınan bilgiyi kullanarak verileri getir
+           
             arama_termi = self.silinecek.text()
             secilenvt.execute("SELECT * FROM isimler WHERE ad LIKE ?", (f'%{arama_termi}%',))
             veriler = secilenvt.fetchall()
 
-            # Verileri arayüze ekle
+            
             x = 1
             for veri in veriler:
-                for i, bilgi in enumerate(veri[1:]):  # Id dahil değil, ilk index 1'den başlıyor
+                for i, bilgi in enumerate(veri[1:]):  
                     self.icerik.addWidget(QLabel(str(bilgi)), x, i + 1)
                 x += 1
 
-            # Sonuçları sakla
+           
             self.bulunanlar = veriler
 
-            # Bağlantıyı kapat
             secilenvt.close()
             veritabani1.close()
         except Exception as e:
@@ -320,14 +319,14 @@ class SilmeEkrani(QMainWindow):
 
     def sil(self):
         try:
-            # Silinecek ID'yi al
+            
             silinecek_id = self.silinecekId.text()
 
-            # Veritabanı bağlantısını aç
+            
             veritabani1 = sqlite3.connect('rehber3.db')
             secilenvt = veritabani1.cursor()
 
-            # ID'ye sahip olan kaydı sil
+            
             secilenvt.execute("DELETE FROM isimler WHERE id = ?", (silinecek_id,))
             veritabani1.commit()
 
@@ -374,12 +373,12 @@ class DuzeltmeEkrani(QMainWindow):
         self.silB.clicked.connect(self.duzelt)
 
         self.d1 = QPushButton('Ana ekrana dön')
-        self.icerik.addWidget(self.d1,8,0) # x.satır ve 1.sütuna self.d1 widgetini yerleştir.
+        self.icerik.addWidget(self.d1,8,0)
         self.d1.clicked.connect(self.anaEkranaDon)
 
-        araclar = QWidget() # Pencere widgeti oluştur.
-        araclar.setLayout(self.icerik) # Pencere widgeti için layout ata
-        self.setCentralWidget(araclar) # pencere widgeti ana layatunu ata
+        araclar = QWidget() 
+        araclar.setLayout(self.icerik) 
+        self.setCentralWidget(araclar) 
     
     def getir(self):
         silinecekVeri = self.silinecek.text()
@@ -413,11 +412,10 @@ class DuzeltmeEkrani(QMainWindow):
         self.liste.show()
         
     def anaEkranaDon(self):
-        # Ana ekrana dönme işlemini burada tanımlayın
         pass
 
 class VeriListeEkrani(QMainWindow):
-    # VeriListeEkrani sınıfının tanımı burada olmalı
+    
     pass
 
 

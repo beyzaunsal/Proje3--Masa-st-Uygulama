@@ -141,9 +141,6 @@ class EkleEkrani(QMainWindow):
         icerik.addWidget(self.ekle)
 
         self.ekle.clicked.connect(self.kaydet)
-        icerik.addWidget(self.ekle)
-
-        self.ekle.clicked.connect(self.kaydet)
 
         araclar = QWidget()
         araclar.setLayout(icerik)
@@ -172,6 +169,7 @@ class EkleEkrani(QMainWindow):
 
         except Exception as e:
             print("Bir hata oluştu:", e)
+
 class ListeleEkrani(QMainWindow):
     def __init__(self,title):
         super().__init__()
@@ -190,7 +188,7 @@ class ListeleEkrani(QMainWindow):
         
         for a in liste: 
             print (a[1],a[2],a[3])
-            icerik.addWidget(QLabel(a[1]),x,1) # gridLayout taki x.satır ve 1.sütuna QLable yerleştir.
+            icerik.addWidget(QLabel(a[1]),x,1) 
             icerik.addWidget(QLabel(a[2]),x,2)
             icerik.addWidget(QLabel(a[3]),x,3)
             x+=1
@@ -206,8 +204,8 @@ class ListeleEkrani(QMainWindow):
         veritabani1.close()
 
     def anaEkranaDon(self):
-        self.close() # mevcut pencereyi kapa
-        self.ae = AnaEkran('Ana ekran') # anaekran isimli pencere tanımla
+        self.close() 
+        self.ae = AnaEkran('Ana ekran')
         self.ae.show() 
 
 class AramaEkrani(QMainWindow):
