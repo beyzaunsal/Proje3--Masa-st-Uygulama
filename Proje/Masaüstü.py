@@ -2,7 +2,6 @@ import sys
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
-import Proje.Rehber as Rehber
 
 def SifreOlustur():
     kullaniciAdi ="admin"
@@ -138,7 +137,7 @@ class EkleEkrani(QMainWindow):
     def kaydet(self):
         print("Kayıt kaydedildi.")
 
-    def kaydet(self):
+    def kaydet(self):# Veritabanı işlemleri
         try:
             ad = self.edit1.text()
             soyad = self.edit2.text()
