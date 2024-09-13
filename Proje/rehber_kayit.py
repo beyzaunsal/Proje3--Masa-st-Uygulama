@@ -216,17 +216,14 @@ class AramaEkrani(QMainWindow):
         self.setWindowTitle(title)
 
         self.icerik =QGridLayout()
-
         self.silinecek = QLineEdit()
         self.icerik.addWidget(self.silinecek, 0, 0)
 
         self.getird =QPushButton("Getir")
         self.icerik.addWidget(self.getird,1,0)
 
-        self.getird.clicked.connect(self.getirdClicked)
-
-        self.Bulunanlar=[]
-        getird.clicked.connect(self.getir)
+        self.getird.clicked.connect(self.getir)
+        self.bulunanlar=[]
         print("bulunanlar:",self.bulunanlar)
 
         self.icerik.addWidget(QLabel('Id'),0,1)
@@ -270,143 +267,122 @@ class SilmeEkrani(QMainWindow):
         self.setWindowTitle(title)
 
         self.icerik =QGridLayout()
-
         self.silinecek = QLineEdit()
         self.icerik.addWidget(self.silinecek,0,0)
 
-        getird= QPushButton("Getir")
-        self.icerik.addWidget(getird,1,0)
+        self.silB= QPushButton("Sil")
+        self.icerik.addWidget(self.silB,1,0)
 
-        self.bulunanlar = []
-        getird.clicked.connect(self.getir)
+        self.silB.clicked.connect(self.sil)
         
-
         self.icerik.addWidget(QLabel('Id:'),0,1)
         self.icerik.addWidget(QLabel('Adı:'),0,2)
         self.icerik.addWidget(QLabel('Soyadı:'),0,3)
         self.icerik.addWidget(QLabel('T.Numarası:'),0,4)
 
-        self.silinecekId = QLineEdit()
-        self.silinecekId.setPlaceholderText("Silinecek ID giriniz.")
-        self.icerik.addWidget(self.silinecekId,3,0)
-
-        self.silB = QPushButton('Sil')
-        self.icerik.addWidget(self.silB,4,0)
-        self.silB.clicked.connect(self.sil)
-
         self.d1 = QPushButton('Ana ekrana dön')
-        self.icerik.addWidget(self.d1,5,0) # x.satır ve 1.sütuna self.d1 widgetini yerleştir.
         self.d1.clicked.connect(self.anaEkranaDon)
+        self.icerik.addWidget(self.d1,2,0)
 
-        araclar = QWidget() # Pencere widgeti oluştur.
-        araclar.setLayout(self.icerik) # Pencere widgeti için layout ata
+        araclar = QWidget() 
+        araclar.setLayout(self.icerik) 
         self.setCentralWidget(araclar)
 
-    def getir(self):
+
+    def sil(self):
         silinecekVeri = self.silinecek.text()
         import sqlite3
         veritabani1 = sqlite3.connect('rehber.db')
         secilenVT = veritabani1.cursor()
-        gelen = secilenVT.execute(f"SELECT * FROM isimler WHERE ad='{silinecekVeri}'")
-        x=1
-        silinecek = []
-        for a in gelen:
-            print(a[0],a[1],a[2],a[3])
-            self.icerik.addWidget(QLabel(str(a[0])),x,1)
-            self.icerik.addWidget(QLabel(str(a[1])),x,2)
-            self.icerik.addWidget(QLabel(str(a[2])),x,3)
-            self.icerik.addWidget(QLabel(str(a[3])),x,4)
-            silinecek.append(str(a[0]))
-            x+=1
+        secilenVT.execute(f"DELETE FROM isimler WHERE ad='{silinecekVeri}'")
+        veritabani1.commit()
+        veritabani1.close()
+        print(f"{silinecekVeri} silindi.")
     
-    veritabani1.close()
-
-def sil(self):
-    import sqlite3
-    veritabani1 = sqlite3.connect('rehber.db')
-    secilenVT = veritabani1.cursor()
-    print("self.silinecekId.text()",self.silinecekId.text())
-    secilenVT.execute(f"DELETE FROM isimler WHERE id='{self.silinecekId.text()}'")
-    veritabani1.commit()
-    veritabani1.close()
-    self.close()
-    self.liste = ListeEkrani()
-    self.liste.show()
+    def anaEkranaDon(self):
+        self.close()
+        self.ae = AnaEkran()
+        self.ae.show()
         
 class DuzeltmeEkrani(QMainWindow):
-    def __init__(self,title):
+    def __init__(self, title):
         super().__init__()
         self.setWindowTitle(title)
 
-        self.icerik =QGridLayout()
-        self.silinecek = QLineEdit()
-        self.icerik.addWidget(self.silinecek,0,0)
-        getirB = QPushButton('Getir')
-        self.icerik.addWidget(getirB,1,0)
+        self.icerik = QGridLayout()
 
-        getirB.clicked.connect(self.getir)
-        self.icerik.addWidget(QLabel('Id'),0,1)
-        self.icerik.addWidget(QLabel('Adı'),0,2)
-        self.icerik.addWidget(QLabel('Soyadı'),0,3)
-        self.icerik.addWidget(QLabel('T.Numarası'),0,4)
-        self.duzelecekId = QLineEdit("Düzeltilecek Id")
-        self.icerik.addWidget(self.duzelecekId,3,0)
+        # Alanlar
+        self.idGuncelle = QLineEdit()
+        self.yeniAd = QLineEdit()
+        self.yeniSoyad = QLineEdit()
+        self.yeniTNo = QLineEdit()
 
-        self.yeniAd = QLineEdit("Yeni Ad")
-        self.icerik.addWidget(self.yeniAd,4,0)
-        self.yeniSoyad = QLineEdit("Yeni Soyad")
-        self.icerik.addWidget(self.yeniSoyad,5,0)
-        self.yeniNumara = QLineEdit("Yeni Numara")
-        self.icerik.addWidget(self.yeniNumara,6,0)
+        # Widget'ları yerleştirme
+        self.icerik.addWidget(QLabel('ID:'), 0, 0)
+        self.icerik.addWidget(self.idGuncelle, 0, 1)
+        
+        self.icerik.addWidget(QLabel('Yeni Ad:'), 1, 0)
+        self.icerik.addWidget(self.yeniAd, 1, 1)
+        
+        self.icerik.addWidget(QLabel('Yeni Soyad:'), 2, 0)
+        self.icerik.addWidget(self.yeniSoyad, 2, 1)
+        
+        self.icerik.addWidget(QLabel('Yeni T.Numarası:'), 3, 0)
+        self.icerik.addWidget(self.yeniTNo, 3, 1)
 
-        self.silB = QPushButton('Düzelt')
-        self.icerik.addWidget(self.silB,7,0)
-        self.silB.clicked.connect(self.duzelt)
+        self.getirB = QPushButton('Getir')
+        self.icerik.addWidget(self.getirB, 4, 0)
+        self.getirB.clicked.connect(self.getir)
 
-        self.d1 = QPushButton('Ana ekrana dön')
-        self.icerik.addWidget(self.d1,8,0) # x.satır ve 1.sütuna self.d1 widgetini yerleştir.
-        self.d1.clicked.connect(self.anaEkranaDon)
-
-        araclar = QWidget() # Pencere widgeti oluştur.
-        araclar.setLayout(self.icerik) # Pencere widgeti için layout ata
-        self.setCentralWidget(araclar) # pencere widgeti ana layatunu ata
-
-def getir(self):
-    silinecekVeri = self.silinecek.text()
-    import sqlite3
-    veritabani1 = sqlite3.connect('rehber.db')
-    secilenVT = veritabani1.cursor()
-    gelen = secilenVT.execute(f"SELECT * FROM isimler WHERE ad='{silinecekVeri}'")
-    x=1
-    silinecek = []
-    for a in gelen:
-      print(a[0],a[1],a[2],a[3])
-      self.icerik.addWidget(QLabel(str(a[0])),x,1)
-      self.icerik.addWidget(QLabel(str(a[1])),x,2)
-      self.icerik.addWidget(QLabel(str(a[2])),x,3)
-      self.icerik.addWidget(QLabel(str(a[3])),x,4)
-      silinecek.append(str(a[0]))
-      x+=1
-  
-    veritabani1.close()
- 
-
-def duzelt(self):
-    import sqlite3
-    veritabani1 = sqlite3.connect('rehber.db')
-    secilenVT = veritabani1.cursor()
-    print("self.duzelecekId.text()",self.duzelecekId.text())
-    secilenVT.execute(f"UPDATE isimler SET ad = '{self.yeniAd.text()}', soyad = '{self.yeniSoyad.text()}', numara = '{self.yeniNumara.text()}' WHERE id = '{self.duzelecekId.text()}'")
-    veritabani1.commit()
-    veritabani1.close()
-    self.close()
-    self.liste = ListeEkrani()
-    self.liste.show()
+        self.duzenleB = QPushButton('Düzenle')
+        self.icerik.addWidget(self.duzenleB, 4, 1)
+        self.duzenleB.clicked.connect(self.duzenle)
     
+        self.d1 = QPushButton('Ana ekrana dön')
+        self.icerik.addWidget(self.d1, 5, 0)
+        self.d1.clicked.connect(self.anaEkranaDon)
+        
+        araclar = QWidget()  
+        araclar.setLayout(self.icerik)  
+        self.setCentralWidget(araclar) 
+    def getir(self):
+        idVeri = self.idGuncelle.text()
+        import sqlite3
+        veritabani1 = sqlite3.connect('rehber.db')
+        secilenVT = veritabani1.cursor()
+
+        gelen = secilenVT.execute(f"SELECT * FROM isimler WHERE id='{idVeri}'").fetchone()
+
+        if gelen:
+            print(f"Bulunan veri: {gelen}")
+            self.yeniAd.setText(gelen[1])
+            self.yeniSoyad.setText(gelen[2])
+            self.yeniTNo.setText(gelen[3])
+
+        veritabani1.close()
+
+    def duzenle(self):
+        idVeri = self.idGuncelle.text()
+        yeniAd = self.yeniAd.text()
+        yeniSoyad = self.yeniSoyad.text()
+        yeniTNo = self.yeniTNo.text()
+        import sqlite3
+        veritabani1 = sqlite3.connect('rehber.db')
+        secilenVT = veritabani1.cursor()
+        secilenVT.execute(f"UPDATE isimler SET ad='{yeniAd}', soyad='{yeniSoyad}', tno='{yeniTNo}' WHERE id='{idVeri}'")
+        veritabani1.commit()
+        veritabani1.close()
+        print(f"Veri güncellendi: ID {idVeri}")
+
+    def anaEkranaDon(self):
+        self.close()
+        self.ae = AnaEkran()
+        self.ae.show()
+
 if __name__ == "__main__":
-    sifreOlustur()  # Şifre dosyasını oluştur
+    sifreOlustur() 
     uygulama = QApplication([])
-    pencere = LoginPenceresi()  # Sınıf ismini doğru şekilde kullanın
+    pencere = LoginPenceresi()  
     pencere.show()
     uygulama.exec()
 
