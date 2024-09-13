@@ -1,6 +1,6 @@
 <h1>RehberApp / Rehber Masaüstü Uygulaması</h1>
 <hr /><b><h4>Rehber AnaMenü </h4></b>
-<img src="Resimler/anamenü.png" width="350" height="200" alt="Örnek Resim"/>
+<img src="Resimler/anaekran.png" width="350" height="200" alt="Örnek Resim"/>
 
 
 
