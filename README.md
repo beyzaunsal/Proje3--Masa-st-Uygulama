@@ -11,5 +11,5 @@
 <hr /><b><h4>Rehberdeki Kişiyi Düzelt</h4></b>
 <img src="Resimler/duzeltbu.png" width="350" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Sil</h4></b>
-<img src="Resimler/silbu.png" width="250" height="200" alt="Örnek Resim"/>
-<img src="Resimler/silindi.png" width="250" height="200" alt="Örnek Resim"/>
+<img src="Resimler/silbu.png" width="250" height="150" alt="Örnek Resim"/>
+<img src="Resimler/silindi.png" width="250" height="150" alt="Örnek Resim"/>
