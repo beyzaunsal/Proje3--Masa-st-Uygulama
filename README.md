@@ -15,3 +15,4 @@
 <img src="Resimler/duzeltbu.png" width="350" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Sil</h4></b>
 <img src="Resimler/silbu.png" width="350" height="200" alt="Örnek Resim"/>
+<img src="Resimler/silindi.png" width="350" height="200" alt="Örnek Resim"/>
