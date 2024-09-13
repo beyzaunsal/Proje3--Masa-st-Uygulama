@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
-import Rehber
+import Proje.Rehber as Rehber
 
 def SifreOlustur():
     kullaniciAdi ="admin"
@@ -61,7 +61,7 @@ class AnaEkran(QMainWindow):
         self.duzeltme = DuzeltmeEkrani("Kayıt Düzenle")
         self.duzeltme.show()
 
-class loginPenceresi(QMainWindow):
+class LoginPenceresi(QMainWindow):
     def __init__(self):
         super().__init__()
         
@@ -424,6 +424,6 @@ class VeriListeEkrani(QMainWindow):
     
 
 app = QApplication(sys.argv)
-pencere = loginPenceresi()
+pencere = LoginPenceresi()
 pencere.show()
 sys.exit(app.exec())

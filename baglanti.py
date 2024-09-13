@@ -1,6 +1,6 @@
 import sys
 from PyQt6.QtWidgets import *
-import Rehber
+import Proje.Rehber as Rehber
 import mysql.connector
 
 veritabani1 = baglanti = mysql.connector.connect(

@@ -29,7 +29,7 @@
 # secilenVT.execute("CREATE TABLE kişiler (ad VARCHAR(255), soyad VARCHAR(255), telefon VARCHAR(255))")
 
 import mysql.connector
-import Rehber
+import Proje.Rehber as Rehber
 
 veritabani1 = baglanti = mysql.connector.connect(
     host="localhost", 

@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
-import Rehber
+import Proje.Rehber as Rehber
 
 def sifreOlustur():
     kullananıAdi ="admin"
