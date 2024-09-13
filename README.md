@@ -5,4 +5,4 @@
 <hr /><b><h4>Rehberdeki Kişileri Listele </h4></b>
 <img src="Resimler/listelebu.png" width="350" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehbere Kişi Ara</h4></b>
-<img src="Resimler/arabu.png" width="350" height="200" alt="Örnek Resim"/>
+<img src="Resimler/aramabu.png" width="350" height="200" alt="Örnek Resim"/>
