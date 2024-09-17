@@ -14,14 +14,7 @@ Rehberde kayıtlı isimlere veya telefon numaralarına ulaşmak istediğinizde l
 <img src="Resimler/aramabu.png" width="250" height="100" alt="Örnek Resim"/>
 Listele ekranından ulaşmak yerinde direkt olarak size lazım olan kişinin telefonuna ulaşmak istersiniz arama butonunu seçin ve istenen bilgiyi doldurun. Burada istediğiniz kişinin adını sormaktadır.
 <hr /><b><h4>Rehberdeki Kişiyi Düzelt</h4></b>
-<div class="row">
-  <div class="column">
-    <img src="Resimler/duzenlebu.png" alt="Örnek Resim" style="width:100%">
-  </div>
-  <div class="column">
-    <img src="Resimler/kayıt1.png" alt="Örnek Resim" style="width:100%">
-  </div>
-</div>
+<img src="Resimler/duzeltbu.png" width="250" height="200" alt="Örnek Resim"/><img src="Resimler/kayıt1.png" width="250" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Sil</h4></b>
 <img src="Resimler/silbu.png" width="250" height="150" alt="Örnek Resim"/>
 <img src="Resimler/silindi.png" width="150" height="50" alt="Örnek Resim"/>
