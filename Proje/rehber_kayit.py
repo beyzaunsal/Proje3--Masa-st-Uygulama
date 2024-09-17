@@ -308,14 +308,11 @@ class DuzeltmeEkrani(QMainWindow):
         self.setWindowTitle(title)
 
         self.icerik = QGridLayout()
-
-        # Alanlar
         self.idGuncelle = QLineEdit()
         self.yeniAd = QLineEdit()
         self.yeniSoyad = QLineEdit()
         self.yeniTNo = QLineEdit()
 
-        # Widget'ları yerleştirme
         self.icerik.addWidget(QLabel('ID:'), 0, 0)
         self.icerik.addWidget(self.idGuncelle, 0, 1)
         
@@ -349,13 +346,16 @@ class DuzeltmeEkrani(QMainWindow):
         veritabani1 = sqlite3.connect('rehber.db')
         secilenVT = veritabani1.cursor()
 
-        gelen = secilenVT.execute(f"SELECT * FROM isimler WHERE id='{idVeri}'").fetchone()
+        gelen = secilenVT.execute(f"SELECT * FROM isimler WHERE id='{idVeri}'")
+        gelen = secilenVT.fetchone()
 
         if gelen:
             print(f"Bulunan veri: {gelen}")
             self.yeniAd.setText(gelen[1])
             self.yeniSoyad.setText(gelen[2])
             self.yeniTNo.setText(gelen[3])
+        else:
+            print("Veri Bulunamadı.")
 
         veritabani1.close()
 
@@ -364,13 +364,19 @@ class DuzeltmeEkrani(QMainWindow):
         yeniAd = self.yeniAd.text()
         yeniSoyad = self.yeniSoyad.text()
         yeniTNo = self.yeniTNo.text()
+
         import sqlite3
         veritabani1 = sqlite3.connect('rehber.db')
         secilenVT = veritabani1.cursor()
-        secilenVT.execute(f"UPDATE isimler SET ad='{yeniAd}', soyad='{yeniSoyad}', tno='{yeniTNo}' WHERE id='{idVeri}'")
+
+        # Sütun adını 'numara' olarak güncelleyin
+        secilenVT.execute("UPDATE isimler SET ad=?, soyad=?, numara=? WHERE id=?", (yeniAd, yeniSoyad, yeniTNo, idVeri))
+        
         veritabani1.commit()
         veritabani1.close()
         print(f"Veri güncellendi: ID {idVeri}")
+
+  
 
     def anaEkranaDon(self):
         self.close()
