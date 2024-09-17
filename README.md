@@ -2,6 +2,8 @@
 <img src="Resimler/loginekranı.png" width="250" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehber AnaMenü </h4></b>
 <img src="Resimler/anaekran.png" width="250" height="250" alt="Örnek Resim"/>
+Rehber Masaüstü uygulamamızı çalıştırabilmek için öncelikle kullanıcı adı ve şifremizi girmemiz gerekmektedir.( Kullanıcı adı : admin , şifre :1234
+) 
 <hr /><b><h4>Rehbere Kişi Ekle</h4></b>
 <img src="Resimler/eklebu.png" width="250" height="250" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişileri Listele </h4></b>
