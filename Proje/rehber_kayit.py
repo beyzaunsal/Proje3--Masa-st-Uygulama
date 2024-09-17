@@ -388,7 +388,7 @@ if __name__ == "__main__":
     uygulama = QApplication([])
     pencere = LoginPenceresi()  
     pencere.show()
-    uygulama.exec()
+uygulama.exec()
 
             
             
