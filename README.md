@@ -1,5 +1,5 @@
 <h1>RehberApp / Rehber Masaüstü Uygulaması</h1>
-<img src="Resimler/loginekranı.png" width="250" height="100" alt="Örnek Resim"/>
+<img src="Resimler/loginekranı.png" width="250" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehber AnaMenü </h4></b>
 <img src="Resimler/anaekran.png" width="250" height="250" alt="Örnek Resim"/>
 <hr /><b><h4>Rehbere Kişi Ekle</h4></b>
