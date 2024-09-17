@@ -13,6 +13,7 @@ Masaüstü uygulamamıza bir kişi eklemek istediniz.Sizden istenen adı, soyad�
 Rehberde kayıtlı isimlere veya telefon numaralarına ulaşmak istediğinizde listele butonunu seçmeniz gerekmektedir. Size daha iyi anlatabilmek için ekstra bir kişi daha ekledim. Listele ekranımızda kayıtlı tüm kişileri görebilirsiniz. 
 <hr /><b><h4>Rehberdeki Kişiyi Ara</h4></b>
 <img src="Resimler/aramabu.png" width="250" height="100" alt="Örnek Resim"/>
+Listele ekranından ulaşmak yerinde direkt olarak size lazım olan kişinin telefonuna ulaşmak istersiniz arama butonunu seçin ve istenen bilgiyi doldurun. Burada istediğiniz kişinin adını sormaktadır.
 <hr /><b><h4>Rehberdeki Kişiyi Düzelt</h4></b>
 <img src="Resimler/duzeltbu.png" width="250" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Sil</h4></b>
