@@ -10,6 +10,7 @@ Karşımıza şifreyi girdikten sonra ana menü ekranı çıkmaktadır. Burada i
 Masaüstü uygulamamıza bir kişi eklemek istediniz.Sizden istenen adı, soyadı ve telefon bilgileridir. (Telefon numarası rasgele yazılmıştır.)
 <hr /><b><h4>Rehberdeki Kişileri Listele </h4></b>
 <img src="Resimler/listelebu.png" width="250" height="100" alt="Örnek Resim"/>
+Rehberde kayıtlı isimlere veya telefon numaralarına ulaşmak istediğinizde listele butonunu seçmeniz gerekmektedir. Size daha iyi anlatabilmek için ekstra bir kişi daha ekledim. Listele ekranımızda kayıtlı tüm kişileri görebilirsiniz. 
 <hr /><b><h4>Rehberdeki Kişiyi Ara</h4></b>
 <img src="Resimler/aramabu.png" width="250" height="100" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Düzelt</h4></b>
