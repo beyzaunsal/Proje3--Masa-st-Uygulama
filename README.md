@@ -9,7 +9,7 @@
 <hr /><b><h4>Rehberdeki Kişiyi Ara</h4></b>
 <img src="Resimler/aramabu.png" width="250" height="100" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Düzelt</h4></b>
-<img src="Resimler/duzeltbu.png" width="250" height="100" alt="Örnek Resim"/>
+<img src="Resimler/duzeltbu.png" width="250" height="200" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Sil</h4></b>
 <img src="Resimler/silbu.png" width="250" height="150" alt="Örnek Resim"/>
 <img src="Resimler/silindi.png" width="100" height="100" alt="Örnek Resim"/>
