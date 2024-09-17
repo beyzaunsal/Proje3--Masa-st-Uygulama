@@ -1,5 +1,5 @@
 <h1>RehberApp / Rehber Masaüstü Uygulaması</h1>
-<img src="Resimler/GİRİŞ1.png" width="250" height="200" alt="Örnek Resim"/>
+<img src="Resimler/GİRİŞ1.png" width="250" height="250" alt="Örnek Resim"/>
 Rehber Masaüstü uygulamamızı çalıştırabilmek için öncelikle kullanıcı adı ve şifremizi girmemiz gerekmektedir.( Kullanıcı adı : admin , şifre :1234
 ) 
 <hr /><b><h4>Rehber AnaMenü </h4></b>
