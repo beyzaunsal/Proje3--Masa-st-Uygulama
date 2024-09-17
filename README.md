@@ -14,8 +14,8 @@ Rehberde kayıtlı isimlere veya telefon numaralarına ulaşmak istediğinizde l
 <img src="Resimler/aramabu.png" width="250" height="100" alt="Örnek Resim"/>
 Listele ekranından ulaşmak yerinde direkt olarak size lazım olan kişinin telefonuna ulaşmak istersiniz arama butonunu seçin ve istenen bilgiyi doldurun. Burada istediğiniz kişinin adını sormaktadır.
 <hr /><b><h4>Rehberdeki Kişiyi Sil</h4></b>
-<img src="Resimler/silmeee.png" width="250" height="50" alt="Örnek Resim"/>
-<img src="Resimler/edit2.png" width="250" height="150" alt="Örnek Resim"/>
+<img src="Resimler/silmeee.png" width="250" height="150" alt="Örnek Resim"/>
+<img src="Resimler/edit2.png" width="250" height="50" alt="Örnek Resim"/>
 <hr /><b><h4>Rehberdeki Kişiyi Düzelt</h4></b>
 <img src="Resimler/duzeltbu.png" width="250" height="200" alt="Örnek Resim"/><img src="Resimler/kayıt1.png" width="250" height="200" alt="Örnek Resim"/>
 Kayıt düzenleme seçeneğimizde ilk olarak düzleteceğimiz kişinin id adresini öğrenmemiz gerektedir. Listele ekranından bu bilgiye ulaşabilirsiniz. Ardından kişimizin güncel bilgilerini kaydedebilirsiniz.
